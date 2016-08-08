@@ -1,11 +1,21 @@
-<h1>Worksheet Summary</h1>
 
-<% @worksheets.each do |worksheet| %>
-  <div>
-    <h1><%= worksheet.piw_id %></h1><br />
-    <i><%= worksheet.submitted_by %></i><br />
-    <p><%= worksheet.description %></p><br />
-  </div>
+<div class="container">
+  <h1>Worksheet Summary</h1>
+  <br>
 
-  <hr />
-<% end %>
+  <table class="summary-table">
+    <tr>
+      <th>PIW ID</th>
+      <th>Submitted By</th>
+      <th>Description</th>
+    </tr>
+    <% @worksheets.each do |worksheet| %>
+      <tr>
+        <td><%= worksheet.piw_id %></td>
+        <td><%= worksheet.submitted_by %></td>
+        <td><%= worksheet.description %></td>
+      </tr> 
+    <% end %>
+  </table>
+
+</div>
