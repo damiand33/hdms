@@ -1,1 +1,11 @@
 <h1>Worksheet Summary</h1>
+
+<% @worksheets.each do |worksheet| %>
+  <div>
+    <h1><%= worksheet.piw_id %></h1><br />
+    <i><%= worksheet.submitted_by %></i><br />
+    <p><%= worksheet.description %></p><br />
+  </div>
+
+  <hr />
+<% end %>
