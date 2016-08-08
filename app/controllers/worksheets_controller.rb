@@ -1,4 +1,6 @@
 class WorksheetsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+  
   def index
     @worksheets = Worksheet.all
   end
@@ -8,7 +10,7 @@ class WorksheetsController < ApplicationController
   end
 
   def create
-    Worksheet.create(worksheet_params)
+    current_user.places.create(place_params)
     redirect_to root_path
   end
 

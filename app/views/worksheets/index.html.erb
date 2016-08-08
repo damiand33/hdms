@@ -8,12 +8,18 @@
       <th>PIW ID</th>
       <th>Submitted By</th>
       <th>Description</th>
+      <th>Entered By</th>
     </tr>
     <% @worksheets.each do |worksheet| %>
       <tr>
         <td><%= worksheet.piw_id %></td>
         <td><%= worksheet.submitted_by %></td>
         <td><%= worksheet.description %></td>
+        <% if worksheet.user.present? %>
+          <td><%= worksheet.user.email %></td>
+        <% else %>
+          <td></td>
+        <% end %>
       </tr> 
     <% end %>
   </table>
