@@ -18,6 +18,16 @@ class WorksheetsController < ApplicationController
     @worksheet = Worksheet.find(params[:id])
   end
 
+  def edit
+    @worksheet = Worksheet.find(params[:id])
+  end
+
+  def update
+    @worksheet = Worksheet.find(params[:id])
+    @worksheet.update_attributes(worksheet_params)
+    redirect_to root_path
+  end
+
   private
 
   def worksheet_params

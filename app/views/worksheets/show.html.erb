@@ -10,5 +10,10 @@
   <h2><strong>Created: </strong><%= @worksheet.created_at %></h2>
   <br>
   <h2><strong>Modified: </strong><%= @worksheet.updated_at %></h2>  
+
+  <div class="pull-right">
+  <%= link_to 'Edit', edit_worksheet_path(@worksheet), class: 'btn btn-primary' %>
+  </div>
+
 </div>
 

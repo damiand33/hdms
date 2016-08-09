@@ -1,0 +1,13 @@
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+
+  <h1>Update a PIW</h1>
+
+  <%= simple_form_for @worksheet do |f| %>
+    <%= f.input :piw_id, label: 'PIW ID:' %><br>
+    <%= f.input :submitted_by, label: 'Submitted by:' %><br>
+    <%= f.input :description, label: 'Description:' %>
+    <br>
+    <%= f.submit 'Update', class: 'btn btn-primary' %>
+  <% end %>
+  <br>
+</div>
