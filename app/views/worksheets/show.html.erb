@@ -15,5 +15,12 @@
   <%= link_to 'Edit', edit_worksheet_path(@worksheet), class: 'btn btn-primary' %>
   </div>
 
+    <div class="clear"></div>
+    <%= simple_form_for @comment, url: '#' do |f| %>
+      <%= f.input :message, label: 'Comment' %>
+      <%= f.input :priority %>
+      <%= f.submit "Add Comment", class: 'btn btn-primary' %>
+    <% end %>
+
 </div>
 
