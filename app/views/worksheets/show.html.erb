@@ -16,7 +16,7 @@
   </div>
 
     <div class="clear"></div>
-    <%= simple_form_for @comment, url: '#' do |f| %>
+    <%= simple_form_for @comment, url: worksheet_comments_path(@worksheet) do |f| %>
       <%= f.input :message, label: 'Comment' %>
       <%= f.input :priority %>
       <%= f.submit "Add Comment", class: 'btn btn-primary' %>
