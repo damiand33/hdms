@@ -18,3 +18,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 
+
+  $( function() {
+    $( ".datepicker" ).datepicker();
+  } );

@@ -7,19 +7,21 @@
     <tr>
       <th>PIW ID</th>
       <th>Submitted By</th>
-      <th>Description</th>
+      <th>As-is Description</th>
       <th>Entered By</th>
+      <th>Date Submitted</th>
     </tr>
     <% @worksheets.each do |worksheet| %>
       <tr>
         <td><%= link_to worksheet.piw_id, worksheet_path(worksheet) %></td>
         <td><%= worksheet.submitted_by %></td>
-        <td><%= worksheet.description %></td>
+        <td><%= worksheet.description_as_is %></td>
         <% if worksheet.user.present? %>
           <td><%= worksheet.user.email %></td>
         <% else %>
           <td></td>
         <% end %>
+        <td><%= worksheet.date_opened %></td>
       </tr> 
     <% end %>
   </table>

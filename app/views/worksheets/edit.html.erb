@@ -1,5 +1,4 @@
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
@@ -11,7 +10,7 @@
     <div class="row">
       <div class="col-xs-3"><%= f.input :piw_id, label: 'PIW ID:' %></div>
       <div class="col-xs-4"><%= f.input :submitted_by, label: 'Submitted by:' %></div>
-      <div class="col-xs-3"><%= f.input :date_opened, as: :string, label: 'Date Opened:', input_html: { id: 'datepicker' } %></div>
+      <div class="col-xs-3"><%= f.input :date_opened, as: :string, label: 'Date Opened:', input_html: { class: 'datepicker' } %></div>
       
     </div>
     <br>
@@ -37,6 +36,19 @@
     <div class="row"> 
       <div class="col-xs-12"><%= f.input :description_to_be, label: 'Description To-Be:' %></div>
     </div>
+
+    <br>
+
+    <div class="row"> 
+      <div class="col-xs-12"><%= f.input :action_taken, label: 'Action Taken:' %></div>
+    </div>
+
+    <br>
+
+    <div class="row"> 
+      <div class="col-xs-6"><%= f.input :action_taken_by, label: 'Action Taken By:' %></div>
+      <div class="col-xs-3"><%= f.input :date_closed, as: :string, label: 'Date Closed:', input_html: { class: 'datepicker' } %></div>
+    </div>
       
       <br>
     <%= f.submit 'Update', class: 'btn btn-primary' %>
@@ -44,11 +56,6 @@
 </div>
 
 <br>
-<script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
 
 
 </div>

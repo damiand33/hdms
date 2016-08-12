@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811151145) do
+ActiveRecord::Schema.define(version: 20160812163805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20160811151145) do
     t.integer  "user_id"
     t.string   "pre_load"
     t.string   "module"
-    t.datetime "date_opened"
+    t.date     "date_opened"
     t.string   "incident_report_number"
     t.text     "description_as_is"
     t.text     "description_to_be"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20160811151145) do
     t.string   "requested_by"
     t.text     "action_taken"
     t.string   "action_taken_by"
-    t.datetime "date_closed"
+    t.date     "date_closed"
   end
 
   add_index "worksheets", ["user_id"], name: "index_worksheets_on_user_id", using: :btree
