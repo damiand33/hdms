@@ -1,13 +1,31 @@
-<div class="booyah-box col-xs-10 col-xs-offset-1">
+<div class="booyah-box col-md-8 col-md-offset-2">
 
   <h1>Enter PIW Details</h1>
 
   <%= simple_form_for @worksheet do |f| %>
-    <%= f.input :piw_id, label: 'PIW ID:' %><br>
-    <%= f.input :submitted_by, label: 'Submitted by:' %><br>
-    <%= f.input :description, label: 'Description:' %>
-    <br>
+    <div class="row">
+      <div class="col-xs-3"><%= f.input :piw_id, label: 'PIW ID:' %></div>
+      <div class="col-xs-2"><%= f.input :submitted_by, label: 'Submitted by:' %></div>
+      <div class="col-xs-2"><%= f.input :date_opened, label: 'Date Opened:' %></div>
+    </div>
+
+    <div class="row">  
+      <div class="col-xs-2"><%= f.input :pre_load, label: 'Pre-Load:' %></div>
+      <div class="col-xs-2"><%= f.input :module, label: 'Module:' %></div>
+      <div class="col-xs-2"><%= f.input :incident_report_number, label: 'Incident Report #:' %></div>
+    </div>
+
+    <div class="row">  
+      <div class="col-xs-2"><%= f.input :description_as_is, label: 'Description As-Is:' %></div>
+    </div>
+
+    <div class="row"> 
+      <div class="col-xs-2"><%= f.input :description_to_be, label: 'Description To-Be:' %></div>
+    </div>
+      
+      <br>
     <%= f.submit 'Create', class: 'btn btn-primary' %>
   <% end %>
-  <br>
 </div>
+<br>
+

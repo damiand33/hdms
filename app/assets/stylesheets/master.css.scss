@@ -41,7 +41,7 @@ th, td {
   padding: 15px;
 }
 
-h1 {
+.centered-header {
   text-align: center;
 }
 
@@ -62,4 +62,34 @@ h1 {
 
 .clear {
     clear: both;
+}
+
+
+.piw-col {
+  border: 1px solid;
+  padding: 10px;
+  margin-bottom: 0.02px;
+  margin-top: 0.02px;
+
+}
+
+.piw-col-bottom {
+  border-right: 1px solid;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+  padding: 10px;
+  margin-bottom: 0.02px;
+  margin-top: 0.02px;
+
+}
+
+.piw-col-header {
+  border: 1px solid;
+  border-color: #000000;
+  padding: 0px;
+
+  color: #FFFFFF;
+  background-color: #286399;
+
+
 }

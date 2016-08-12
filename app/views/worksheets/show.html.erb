@@ -1,24 +1,67 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <h1><strong>PIW Details</strong></h1>
   <br>
-  <h3><strong>PIW ID: </strong><%= @worksheet.piw_id %> </h3>
   
-  <h3><strong>Submitted by: </strong><%= @worksheet.submitted_by %></h3>
-  
-  <h3><strong>Description: </strong><%= @worksheet.description %></h3>
-  
-  <h3><strong>Created: </strong><%= @worksheet.created_at %></h3>
- 
-  <h3><strong>Modified: </strong><%= @worksheet.updated_at %></h3>  
+  <div class="piw-col-header row">
+     <h4 class="centered-header col-xs-12"><strong>General Information</strong></h4>
+  </div> 
 
-  <div class="pull-right">
-  <%= link_to 'Edit', edit_worksheet_path(@worksheet), class: 'btn btn-primary' %>
+  <div class="piw-row row">
+    <h4 class="piw-col col-xs-2"><strong>Submitted by: </strong><%= @worksheet.submitted_by %></h4>
+    <h4 class="piw-col col-xs-3"><strong>PIW ID: </strong><%= @worksheet.piw_id %> </h4>  
+    <h4 class="piw-col col-xs-3"><strong>Date Opened: </strong><%= @worksheet.date_opened %></h4>
+    <h4 class="piw-col col-xs-4"><strong>Last Updated: </strong><%= @worksheet.updated_at %> </h4>  
+  </div>
+
+  <div class="piw-row row">
+    <h4 class="piw-col-bottom col-xs-3"><strong>Pre-Load: </strong><%= @worksheet.pre_load %> </h4>    
+    <h4 class="piw-col-bottom col-xs-4"><strong>Module: </strong><%= @worksheet.module %> </h4>
+    <h4 class="piw-col-bottom col-xs-5"><strong>Incident Report #: </strong><%= @worksheet.incident_report_number %></h4>
+  </div>
+
+  <div class="piw-row row">
+    <h4 class="piw-col-bottom col-xs-6"><strong>Impact: </strong><%= @worksheet.impact %></h4>
+    <h4 class="piw-col-bottom col-xs-6"><strong>Requested By: </strong><%= @worksheet.requested_by %></h4> 
+
+    
+  </div>
+
+
+  <hr>
+
+  <div class="piw-col-header row">
+     <h4 class="centered-header col-xs-12"><strong>Detailed Description of the Problem</strong></h4>
+  </div>
+  
+  <div class="piw-row row">
+    <h4 class="piw-col-bottom col-xs-12"><strong>As-is: </strong><%= @worksheet.description_as_is %> </h4>
+  </div>
+
+  <div class="piw-row row">
+    <h4 class="piw-col-bottom col-xs-12"><strong>To-be: </strong><%= @worksheet.description_to_be %></h4>
+  </div>
+  
+  <hr>
+
+  <div class="piw-col-header row">
+     <h4 class="centered-header col-xs-12"><strong>Action Taken</strong></h4>
+  </div>
+
+  <div class="piw-row row">
+    <h4 class="piw-col-bottom col-xs-9"><strong>Description: </strong><%= @worksheet.action_taken %></h4>
+    <h4 class="piw-col-bottom col-xs-3"><strong>Action Taken By: </strong><%= @worksheet.action_taken_by %></h4>
+  </div>    
+
+  <br>
+
+  <div class="pull-left">
+  <%= link_to 'Edit PIW', edit_worksheet_path(@worksheet), class: 'btn btn-primary' %>
   </div>
 
     <div class="clear"></div>
 
 <hr>
-  <h2>Comments:</h2>
+  <h4 class="centered-header"><strong>Comments</strong></h4>
     <table class="summary-table">
         <tr>
           <th>Comment</th>

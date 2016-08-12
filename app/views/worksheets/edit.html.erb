@@ -3,11 +3,15 @@
   <h1>Update a PIW</h1>
 
   <%= simple_form_for @worksheet do |f| %>
-    <%= f.input :piw_id, label: 'PIW ID:' %><br>
-    <%= f.input :submitted_by, label: 'Submitted by:' %><br>
-    <%= f.input :description, label: 'Description:' %>
-    <br>
-    <%= f.submit 'Update', class: 'btn btn-primary' %>
+    <div class="row">
+      <div class="col-xs-3"><%= f.input :piw_id, label: 'PIW ID:' %></div>
+      <div class="col-xs-2"><%= f.input :submitted_by, label: 'Submitted by:' %></div>
+      <div class="col-xs-2"><%= f.input :date_opened, as: :date, label: 'Date Opened:' %></div>
+      <div class="col-xs-2"><%= f.input :pre_load, label: 'Pre-Load:' %></div>
+    </div>
+      <%= f.input :description, label: 'Description:' %>
+      <br>
+      <%= f.submit 'Update', class: 'btn btn-primary' %>
   <% end %>
   <br>
 </div>
