@@ -32,6 +32,7 @@ class WorksheetsController < ApplicationController
   private
 
   def worksheet_params
-    params.require(:worksheet).permit(:piw_id, :submitted_by, :description)
+    params.require(:worksheet).permit(:piw_id, :submitted_by, :pre_load, :module, :date_opened, :incident_report_number, :description_as_is, 
+                                      :description_to_be, :impact, :requested_by, :action_taken, :action_taken_by, :date_closed)
   end
 end

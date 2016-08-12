@@ -1,31 +1,55 @@
-<div class="booyah-box col-md-8 col-md-offset-2">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
-  <h1>Enter PIW Details</h1>
+<div class="booyah-box col-md-6 col-md-offset-3">
 
+  <h1>Enter a New PIW</h1>
+  <br>
   <%= simple_form_for @worksheet do |f| %>
     <div class="row">
       <div class="col-xs-3"><%= f.input :piw_id, label: 'PIW ID:' %></div>
-      <div class="col-xs-2"><%= f.input :submitted_by, label: 'Submitted by:' %></div>
-      <div class="col-xs-2"><%= f.input :date_opened, label: 'Date Opened:' %></div>
+      <div class="col-xs-4"><%= f.input :submitted_by, label: 'Submitted by:' %></div>
+      <div class="col-xs-3"><%= f.input :date_opened, as: :string, label: 'Date Opened:', input_html: { id: 'datepicker' } %></div>
+      
+    </div>
+    <br>
+    <div class="row">  
+      <div class="col-xs-4"><%= f.input :pre_load, label: 'Pre-Load:' %></div>
+      <div class="col-xs-4"><%= f.input :module, label: 'Module:' %></div>
+      <div class="col-xs-4"><%= f.input :incident_report_number, label: 'Incident Report #:' %></div>
+    </div>
+    <br>
+    <div class="row">  
+      <div class="col-xs-4"><%= f.input :impact, label: 'Impact:' %></div>
+      <div class="col-xs-4"><%= f.input :requested_by, label: 'Requested By:' %></div>      
     </div>
 
-    <div class="row">  
-      <div class="col-xs-2"><%= f.input :pre_load, label: 'Pre-Load:' %></div>
-      <div class="col-xs-2"><%= f.input :module, label: 'Module:' %></div>
-      <div class="col-xs-2"><%= f.input :incident_report_number, label: 'Incident Report #:' %></div>
-    </div>
+    <br>
 
     <div class="row">  
-      <div class="col-xs-2"><%= f.input :description_as_is, label: 'Description As-Is:' %></div>
+      <div class="col-xs-12"><%= f.input :description_as_is, label: 'Description As-Is:' %></div>
     </div>
+
+    <br>
 
     <div class="row"> 
-      <div class="col-xs-2"><%= f.input :description_to_be, label: 'Description To-Be:' %></div>
+      <div class="col-xs-12"><%= f.input :description_to_be, label: 'Description To-Be:' %></div>
     </div>
       
       <br>
     <%= f.submit 'Create', class: 'btn btn-primary' %>
   <% end %>
 </div>
+
 <br>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+
+
+</div>
 
