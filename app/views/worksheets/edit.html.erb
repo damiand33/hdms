@@ -12,7 +12,8 @@
   <%= simple_form_for @worksheet do |f| %>
     <div class="row">
       <div class="col-xs-3"><%= f.input :piw_id, label: 'PIW ID:' %></div>      
-      <div class="col-xs-4"><%= f.input :submitted_by, label: 'Submitted By:', as: :select, collection: Worksheet::STAFF %></div>
+      <div class="col-xs-3"><%= f.input :submitted_by, label: 'Submitted By:', as: :select, collection: Worksheet::STAFF %></div>
+      <div class="col-xs-3"><%= f.input :status, label: 'Status:', as: :select, collection: Worksheet::STATUS %></div> 
       <div class="col-xs-3"><%= f.input :date_opened, as: :string, label: 'Date Opened:', input_html: { class: 'datepicker' } %></div>
       
     </div>
@@ -66,4 +67,3 @@
     } );
   </script>
 
-  </div>

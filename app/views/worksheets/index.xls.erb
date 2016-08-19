@@ -1,13 +1,5 @@
 
-<div class="booyah-box col-xs-10 col-xs-offset-1">
-  <h1>Problem Identification Worksheet (PIW) Summary</h1>
-  <br>
-  <p class="col-xs-10 col-xs-offset-1">
-    Download Data:
-    <%= link_to "CSV", worksheets_path(format: "csv") %>
-    <%= link_to "Excel", worksheets_path(format: "xls") %>
-  </p>
-  <table class="summary-table col-xs-10 col-xs-offset-1">
+  <table border="1">
     <tr>
       <th>PIW ID</th>
       <th>Submitted By</th>
@@ -18,7 +10,7 @@
     </tr>
     <% @worksheets.each do |worksheet| %>
       <tr>
-        <td class="col-xs-1"><%= link_to worksheet.piw_id, worksheet_path(worksheet) %></td>
+        <td class="col-xs-1"><%= worksheet.piw_id %></td>
         <td class="col-xs-1"><%= worksheet.submitted_by %></td>
         <td class="col-xs-6"><%= worksheet.description_as_is %></td>
         <% if worksheet.user.present? %>
@@ -31,5 +23,3 @@
       </tr> 
     <% end %>
   </table>
-
-</div>

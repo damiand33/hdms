@@ -3,6 +3,11 @@ class WorksheetsController < ApplicationController
   
   def index
     @worksheets = Worksheet.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @worksheets.to_csv}
+      format.xls #{ send_data @worksheets.to_csv(col_sep: "\t")}
+    end
   end
 
   def new
@@ -17,6 +22,7 @@ class WorksheetsController < ApplicationController
   def show
     @worksheet = Worksheet.find(params[:id])
     @comment = Comment.new
+    @attachment = Attachment.new
   end
 
   def edit
@@ -33,6 +39,6 @@ class WorksheetsController < ApplicationController
 
   def worksheet_params
     params.require(:worksheet).permit(:piw_id, :submitted_by, :pre_load, :module, :date_opened, :incident_report_number, :description_as_is, 
-                                      :description_to_be, :impact, :requested_by, :action_taken, :action_taken_by, :date_closed)
+                                      :description_to_be, :impact, :requested_by, :action_taken, :action_taken_by, :date_closed, :status)
   end
 end

@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812163805) do
+ActiveRecord::Schema.define(version: 20160817172442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: true do |t|
+    t.text     "caption"
+    t.integer  "worksheet_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attached_file"
+    t.string   "image"
+  end
 
   create_table "comments", force: true do |t|
     t.text     "message"
@@ -64,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160812163805) do
     t.text     "action_taken"
     t.string   "action_taken_by"
     t.date     "date_closed"
+    t.string   "status"
   end
 
   add_index "worksheets", ["user_id"], name: "index_worksheets_on_user_id", using: :btree

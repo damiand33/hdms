@@ -2,53 +2,55 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-
+<br>
 <div class="booyah-box col-md-6 col-md-offset-3">
 
-  <h1>Enter a New PIW</h1>
+  <h1>Add a New PIW</h1>
   <br>
   <%= simple_form_for @worksheet do |f| %>
     <div class="row">
-      <div class="col-xs-3"><%= f.input :piw_id, label: 'PIW ID:' %></div>
-      <div class="col-xs-4"><%= f.input :submitted_by, label: 'Submitted by:' %></div>
-      <div class="col-xs-3"><%= f.input :date_opened, as: :string, label: 'Date Opened:', input_html: { id: 'datepicker' } %></div>      
+      <div class="col-xs-3"><%= f.input :piw_id, label: 'PIW ID:' %></div>      
+      <div class="col-xs-3"><%= f.input :submitted_by, label: 'Submitted By:', as: :select, collection: Worksheet::STAFF %></div>
+      <div class="col-xs-3"><%= f.input :status, label: 'Status:', as: :select, collection: Worksheet::STATUS, :selected => 'Open' %></div> 
+      <div class="col-xs-3"><%= f.input :date_opened, as: :string, label: 'Date Opened:', input_html: { class: 'datepicker' } %></div>
+      
     </div>
     <br>
-    <div class="row">  
-      <div class="col-xs-4"><%= f.input :pre_load, label: 'Pre-Load:' %></div>
-      <div class="col-xs-4"><%= f.input :module, label: 'Module:' %></div>
+    <div class="row"> 
+      <div class="col-xs-4"><%= f.input :pre_load, label: 'Pre-Load:', as: :select, collection: Worksheet::PRE_LOAD %></div>
+      <div class="col-xs-4"><%= f.input :module, label: 'Module:', as: :select, collection: Worksheet::MODULE %></div>          
       <div class="col-xs-4"><%= f.input :incident_report_number, label: 'Incident Report #:' %></div>
     </div>
     <br>
     <div class="row">  
-      <div class="col-xs-4"><%= f.input :impact, label: 'Impact:' %></div>
-      <div class="col-xs-4"><%= f.input :requested_by, label: 'Requested By:' %></div>      
+      <div class="col-xs-4"><%= f.input :impact, as: :select, collection: Worksheet::LEVEL %></div>
+      <div class="col-xs-4"><%= f.input :requested_by, label: 'Requested By:', as: :select, collection: Worksheet::REQUESTED_BY %></div>         
     </div>
 
     <br>
 
     <div class="row">  
-      <div class="col-xs-12"><%= f.input :description_as_is, label: 'Description As-Is:' %></div>
+      <div class="col-xs-12"><%= f.input :description_as_is, label: 'Description As-Is:', input_html: {rows: 6} %></div>
     </div>
 
     <br>
 
     <div class="row"> 
-      <div class="col-xs-12"><%= f.input :description_to_be, label: 'Description To-Be:' %></div>
+      <div class="col-xs-12"><%= f.input :description_to_be, label: 'Description To-Be:', input_html: {rows: 6} %></div>
     </div>
-      
-      <br>
-    <%= f.submit 'Create', class: 'btn btn-primary' %>
+
+    <br>   
+    <br>
+    <%= f.submit 'Add', class: 'btn btn-primary' %>
   <% end %>
 </div>
 
 <br>
-<script>
-  $( function() {
-    $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
-  } );
+
+  <script>
+    $( function() {    
+      $( ".datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
+    } );
   </script>
 
-
-</div>
-
+  </div>
