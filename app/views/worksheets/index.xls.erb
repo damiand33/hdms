@@ -2,24 +2,36 @@
   <table border="1">
     <tr>
       <th>PIW ID</th>
+      <th>Date Opened</th>
       <th>Submitted By</th>
+      <th>Pre-Load</th>
+      <th>Module</th>
+      <th>Incident Report #</th>
       <th>As-is Description</th>
-      <th>Entered By</th>
-      <th>Date Submitted</th>
+      <th>To-be Description</th>
+      <th>Impact</th>
+      <th>Requested By</th>
+      <th>Action Taken</th>
+      <th>Action Taken By</th>      
       <th>Status</th>
+      <th>Date Closed</th>
     </tr>
     <% @worksheets.each do |worksheet| %>
       <tr>
         <td class="col-xs-1"><%= worksheet.piw_id %></td>
-        <td class="col-xs-1"><%= worksheet.submitted_by %></td>
-        <td class="col-xs-6"><%= worksheet.description_as_is %></td>
-        <% if worksheet.user.present? %>
-          <td class="col-xs-2"><%= worksheet.user.email %></td>
-        <% else %>
-          <td></td>
-        <% end %>
         <td class="col-xs-1"><%= worksheet.date_opened %></td>
+        <td class="col-xs-1"><%= worksheet.submitted_by %></td>
+        <td class="col-xs-1"><%= worksheet.pre_load %></td>
+        <td class="col-xs-1"><%= worksheet.module %></td>
+        <td class="col-xs-1"><%= worksheet.incident_report_number %></td>        
+        <td class="col-xs-6"><%= worksheet.description_as_is %></td>
+        <td class="col-xs-6"><%= worksheet.description_to_be %></td>
+        <td class="col-xs-1"><%= worksheet.impact %></td>
+        <td class="col-xs-1"><%= worksheet.requested_by %></td>
+        <td class="col-xs-1"><%= worksheet.action_taken %></td>
+        <td class="col-xs-1"><%= worksheet.action_taken_by %></td>
         <td class="col-xs-1"><%= worksheet.status%></td>
+        <td class="col-xs-1"><%= worksheet.date_closed %></td>         
       </tr> 
     <% end %>
   </table>
