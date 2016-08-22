@@ -12,17 +12,19 @@ class WorksheetsController < ApplicationController
 
   def new
     @worksheet = Worksheet.new
+
   end
 
   def create
     current_user.worksheets.create(worksheet_params)
+    @attachment = Attachment.new
     redirect_to root_path
   end
 
   def show
     @worksheet = Worksheet.find(params[:id])
     @comment = Comment.new
-    @attachment = Attachment.new
+    
   end
 
   def edit
