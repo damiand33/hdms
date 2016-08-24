@@ -1,4 +1,4 @@
-
+  
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <h1>Problem Identification Worksheet (PIW) Summary</h1>
   <br>
@@ -7,24 +7,18 @@
     <%= link_to "Excel", worksheets_path(format: "xls") %>
   </p>
   <table class="summary-table col-xs-10 col-xs-offset-1">
-    <tr>
+    <tr>      
       <th>PIW ID</th>
       <th>Submitted By</th>
-      <th>As-is Description</th>
-      <th>Entered By</th>
+      <th>As-is Description</th>     
       <th>Date Submitted</th>
       <th>Status</th>
     </tr>
     <% @worksheets.each do |worksheet| %>
-      <tr>
+      <tr>        
         <td class="col-xs-1"><%= link_to worksheet.piw_id, worksheet_path(worksheet) %></td>
         <td class="col-xs-1"><%= worksheet.submitted_by %></td>
-        <td class="col-xs-6"><%= worksheet.description_as_is %></td>
-        <% if worksheet.user.present? %>
-          <td class="col-xs-2"><%= worksheet.user.email %></td>
-        <% else %>
-          <td></td>
-        <% end %>
+        <td class="col-xs-6"><%= worksheet.description_as_is %></td>       
         <td class="col-xs-1"><%= worksheet.date_opened %></td>
         <td class="col-xs-1"><%= worksheet.status%></td>
       </tr> 

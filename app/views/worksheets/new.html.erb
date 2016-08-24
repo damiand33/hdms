@@ -9,7 +9,8 @@
   <br>
   <%= simple_form_for @worksheet do |f| %>
     <div class="row">
-      <div class="col-xs-3"><%= f.input :piw_id, label: 'PIW ID:' %></div>      
+      <div class="col-xs-3"><%= f.input :piw_id, disabled: true, label: 'PIW ID:', input_html: {value: @auto_id} %></div>  
+      <%= f.input :piw_id, as: :hidden, input_html: {value: @auto_id} %>  
       <div class="col-xs-3"><%= f.input :submitted_by, label: 'Submitted By:', as: :select, collection: Worksheet::STAFF %></div>
       <div class="col-xs-3"><%= f.input :status, label: 'Status:', as: :select, collection: Worksheet::STATUS, :selected => 'Open' %></div> 
       <div class="col-xs-3"><%= f.input :date_opened, as: :string, label: 'Date Opened:', input_html: { class: 'datepicker' } %></div>
@@ -40,9 +41,23 @@
     </div>
 
     <br>   
+        <div class="row"> 
+      <div class="col-xs-12"><%= f.input :action_taken, label: 'Action Taken:' %></div>
+    </div>
+
     <br>
-    <%= f.submit 'Add', class: 'btn btn-primary' %>
-  <% end %>
+
+    <div class="row"> 
+      <div class="col-xs-6"><%= f.input :action_taken_by, label: 'Action Taken By:' %></div>
+      <div class="col-xs-3"><%= f.input :date_closed, as: :string, label: 'Date Closed:', input_html: { class: 'datepicker' } %></div>
+    </div>
+      
+    <br>
+    <br>
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <%=link_to "Cancel", :back, class: 'btn btn-danger' %>
+    <% end %>
+    
 </div>
 
 <br>

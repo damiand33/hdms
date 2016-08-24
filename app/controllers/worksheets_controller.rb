@@ -1,9 +1,12 @@
 class WorksheetsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update]
-  
+   
   def index
-    @worksheets = Worksheet.all
-    respond_to do |format|
+    @worksheets = Worksheet.order('id desc').all
+    @currentUser = current_user.username
+    
+
+    respond_to do |format| #Helper for exporting to Excel
       format.html
       format.csv { send_data @worksheets.to_csv}
       format.xls #{ send_data @worksheets.to_csv(col_sep: "\t")}
@@ -12,6 +15,8 @@ class WorksheetsController < ApplicationController
 
   def new
     @worksheet = Worksheet.new
+    t = Time.now.in_time_zone("Eastern Time (US & Canada)")  
+    @auto_id = t.strftime("%m%d%y%H%M") + current_user.username.upcase
   end
 
   def create
@@ -27,12 +32,19 @@ class WorksheetsController < ApplicationController
 
   def edit
     @worksheet = Worksheet.find(params[:id])
+    @attachments = Attachment.all
+    
   end
 
   def update
     @worksheet = Worksheet.find(params[:id])
     @worksheet.update_attributes(worksheet_params)
     redirect_to root_path
+  end
+
+  def images
+    @attachments = Attachment.all
+    @attachment = Attachment.new
   end
 
   private

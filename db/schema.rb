@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817172442) do
+ActiveRecord::Schema.define(version: 20160823174057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20160817172442) do
   add_index "comments", ["user_id", "worksheet_id"], name: "index_comments_on_user_id_and_worksheet_id", using: :btree
   add_index "comments", ["worksheet_id"], name: "index_comments_on_worksheet_id", using: :btree
 
+  create_table "test_images", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -50,10 +58,12 @@ ActiveRecord::Schema.define(version: 20160817172442) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "worksheets", force: true do |t|
     t.string   "piw_id"

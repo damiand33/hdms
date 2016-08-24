@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  resources :test_images
+
   devise_for :users
   root 'worksheets#index'
+  resources :images
   resources :worksheets do
     resources :comments, only: :create
     resources :attachments, only: :create
+    
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
