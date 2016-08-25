@@ -16,10 +16,10 @@
     </tr>
     <% @worksheets.each do |worksheet| %>
       <tr>        
-        <td class="col-xs-1"><%= link_to worksheet.piw_id, worksheet_path(worksheet) %></td>
+        <td class="col-xs-2"><%= link_to worksheet.piw_id, worksheet_path(worksheet) %></td>
         <td class="col-xs-1"><%= worksheet.submitted_by %></td>
         <td class="col-xs-6"><%= worksheet.description_as_is %></td>       
-        <td class="col-xs-1"><%= worksheet.date_opened %></td>
+        <td class="col-xs-2"><%= worksheet.date_opened %></td>
         <td class="col-xs-1"><%= worksheet.status%></td>
       </tr> 
     <% end %>
