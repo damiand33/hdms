@@ -46,7 +46,7 @@ class WorksheetsController < ApplicationController
     @attachments = Attachment.all
     @attachment = Attachment.new
   end
-
+  
   private
 
   def worksheet_params

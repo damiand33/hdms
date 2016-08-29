@@ -7,6 +7,13 @@ class AttachmentsController < ApplicationController
     redirect_to worksheet_path(@worksheet)
   end
 
+  def destroy
+    @worksheet = Worksheet.find(params[:worksheet_id])
+    @attachment = Attachment.find(params[:id])
+    @attachment.destroy
+    redirect_to worksheet_path(@worksheet)
+  end
+
   private
 
   def attachment_params

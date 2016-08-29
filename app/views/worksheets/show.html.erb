@@ -1,7 +1,7 @@
 <br>
 <br>
 <div class="booyah-box col-xs-10 col-xs-offset-1">
-  <h1><strong>PIW Details</strong></h1>
+  <h1><strong>Details</strong></h1>
   <br>
   
   <div class="row">
@@ -10,37 +10,26 @@
     <h4 class="col-xs-2"><strong>Date Opened: </strong><%= @worksheet.date_opened %></h4>
     <h4 class="col-xs-2"><strong>Status: </strong><%= @worksheet.status %></h4>
     <h4 class="col-xs-3"><strong>Last Updated: </strong><%= @worksheet.updated_at %> </h4>  
-  </div>
-
-  <hr>
+  </div>  
 
   <div class="row">
     <h4 class="col-xs-3"><strong>Pre-Load: </strong><%= @worksheet.pre_load %> </h4>    
     <h4 class="col-xs-3"><strong>Module: </strong><%= @worksheet.module %> </h4>
     <h4 class="col-xs-5"><strong>Incident Report #: </strong><%= @worksheet.incident_report_number %></h4>
-  </div>
-
-  <hr>
+  </div> 
 
   <div class="row">
     <h4 class="col-xs-3"><strong>Impact: </strong><%= @worksheet.impact %></h4>
     <h4 class="col-xs-4"><strong>Requested By: </strong><%= @worksheet.requested_by %></h4>     
   </div>
-
-
-  <hr>
   
   <div class="row">
     <h4 class="col-xs-12"><strong>As-is Description: </strong><%= @worksheet.description_as_is %> </h4>
-  </div>
-
-  <hr>
+  </div> 
 
   <div class="row">
     <h4 class="col-xs-12"><strong>To-be Description: </strong><%= @worksheet.description_to_be %></h4>
-  </div>
-  
-  <hr>
+  </div>  
 
   <div class="row">
     <h4 class="col-xs-9"><strong>Action Taken: </strong><%= @worksheet.action_taken %></h4>    
@@ -54,16 +43,47 @@
   <div class="pull-left">
   <%= link_to 'Edit Details', edit_worksheet_path(@worksheet), class: 'btn btn-primary' %>
   </div>
-
+  <div class="clear"></div>
+  <hr>
   <div class="clear"></div>
 
   <h1><strong>Images</strong></h1>
   
   <% @worksheet.attachments.each do |attachment| %>    
-      <div class="row"><%= image_tag attachment.image %></div>
-      <div class="row"><%= attachment.caption %></div>
-
+      <%= image_tag attachment.image, class: 'piw-image' %>      
   <% end %>
+  <div class="clear"></div>
+
+  <!-- Table for images -->
+  <table>
+    <thead>
+      <tr>
+        <th>File Name</th>
+        <th>Caption</th>        
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @worksheet.attachments.each do |image| %>
+        <tr>
+          <td><%= image.image %></td>
+          <td><%= image.caption %></td>    
+          <td><%= link_to 'Delete', worksheet_attachment_path(@worksheet, image), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <!-- End Table for Images -->
+
+  <br>
+  <br>
+  <!-- Button trigger image modal -->
+  <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal">
+    Add an image
+  </button>
+  <button class="btn btn-primary">
+    Edit images
+  </button>
 
   <div class="clear"></div>
   <hr>
@@ -78,7 +98,7 @@
         </tr>        
         <tr>
           <td><%= comment.message %></td>             
-          <td><%= comment.user.email if comment.user %></td> <!--check to see if email is blank before writting to table -->        
+          <td><%= comment.user.username if comment.user %></td> <!--check to see if email is blank before writting to table -->        
         </tr>         
       </table>
     <% end %>
@@ -90,10 +110,6 @@
   <!-- Button trigger comments modal -->
   <button class="btn btn-primary" data-toggle="modal" data-target="#commentsModal">
     Add a comment
-  </button>
-  <!-- Button trigger image modal -->
-  <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal">
-    Add an image
   </button>
 
   <!-- Comments Modal -->

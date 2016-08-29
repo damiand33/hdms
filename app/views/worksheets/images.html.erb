@@ -1,9 +1,8 @@
 <h1>Test</h1>
 <div class="booyah-box col-xs-10 col-xs-offset-1">
 <% @attachments.each do |attachment| %>    
-      <div class="row"><%= image_tag attachment.image %></div>
+      <div class="row"><%= attachment.image %></div>
       <div class="row"><%= attachment.caption %></div>
-
   <% end %>
 <br>
 <br>
