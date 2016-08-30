@@ -14,14 +14,15 @@ class WorksheetsController < ApplicationController
   end
 
   def new
-    @worksheet = Worksheet.new
+    @worksheet = Worksheet.new    
     t = Time.now.in_time_zone("Eastern Time (US & Canada)")  
-    @auto_id = t.strftime("%m%d%y%H%M") + current_user.username.upcase
+    @auto_id = t.strftime("%m%d%y%H%M") + current_user.username.upcase   
   end
 
   def create
-    current_user.worksheets.create(worksheet_params)
-    redirect_to root_path
+    @worksheet = current_user.worksheets.new(worksheet_params)
+    @worksheet.save
+    redirect_to @worksheet
   end
 
   def show
@@ -52,5 +53,5 @@ class WorksheetsController < ApplicationController
   def worksheet_params
     params.require(:worksheet).permit(:piw_id, :submitted_by, :pre_load, :module, :date_opened, :incident_report_number, :description_as_is, 
                                       :description_to_be, :impact, :requested_by, :action_taken, :action_taken_by, :date_closed, :status)
-  end
+  end  
 end

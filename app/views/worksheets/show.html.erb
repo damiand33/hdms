@@ -49,31 +49,18 @@
 
   <h1><strong>Images</strong></h1>
   
-  <% @worksheet.attachments.each do |attachment| %>    
-      <%= image_tag attachment.image, class: 'piw-image' %>      
-  <% end %>
+  
+    <% @worksheet.attachments.each do |attachment| %>    
+        
+        <figure>
+          <%= image_tag attachment.image, class: 'piw-image' %>
+          <figcaption><%= attachment.caption %></figcaption> 
+        </figure>  
+         
+    <% end %>
+ 
   <div class="clear"></div>
 
-  <!-- Table for images -->
-  <table>
-    <thead>
-      <tr>
-        <th>File Name</th>
-        <th>Caption</th>        
-        <th colspan="1"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @worksheet.attachments.each do |image| %>
-        <tr>
-          <td><%= image.image %></td>
-          <td><%= image.caption %></td>    
-          <td><%= link_to 'Delete', worksheet_attachment_path(@worksheet, image), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <!-- End Table for Images -->
 
   <br>
   <br>
@@ -81,7 +68,7 @@
   <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal">
     Add an image
   </button>
-  <button class="btn btn-primary">
+  <button class="btn btn-primary" data-toggle="modal" data-target="#editImageModal">
     Edit images
   </button>
 
@@ -143,6 +130,7 @@
         </div>
           <%= simple_form_for @attachment, url: worksheet_attachments_path(@worksheet) do |f| %>
             <div class="modal-body"> 
+              <%= f.input :name %>
               <%= f.input :caption %>
               <%= f.input :image %>  
             </div>           
@@ -152,6 +140,47 @@
               <%= f.submit "Add Image", class: 'btn btn-primary' %>
           </div>
         <% end %>
+        </div>
+        </div>
+    </div>
+
+  <!-- Edit Image Modal -->
+  <div class="modal fade" id="editImageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Edit images</h4>
+        </div>
+          
+            <div class="modal-body"> 
+              <!-- Table for images -->
+              <table>
+                <thead>
+                  <tr>
+                    <th>Image Name</th>
+                    <th>Caption</th>        
+                    <th colspan="1"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @worksheet.attachments.each do |image| %>
+                    <tr>
+                      <td><%= image.name %></td>                      
+                      <td><%= image.caption %></td>    
+                      <td><%= link_to 'Delete', worksheet_attachment_path(@worksheet, image), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <!-- End Table for Images -->
+            </div>           
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              
+          </div>
+        
         </div>
         </div>
     </div>
