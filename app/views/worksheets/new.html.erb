@@ -10,8 +10,7 @@
   <%= simple_form_for @worksheet do |f| %>
     <div class="row">
       <div class="col-xs-3"><%= f.input :piw_id, disabled: true, label: 'PIW ID:', input_html: {value: @auto_id} %></div>  
-      <%= f.input :piw_id, as: :hidden, input_html: {value: @auto_id} %>  
-      <div class="col-xs-3"><%= f.input :submitted_by, label: 'Submitted By:', as: :select, collection: Worksheet::STAFF %></div>
+      <%= f.input :piw_id, as: :hidden, input_html: {value: @auto_id} %>        
       <div class="col-xs-3"><%= f.input :status, label: 'Status:', as: :select, collection: Worksheet::STATUS, :selected => 'Open' %></div> 
       <div class="col-xs-3"><%= f.input :date_opened, as: :string, label: 'Date Opened:', input_html: { class: 'datepicker' } %></div>
       

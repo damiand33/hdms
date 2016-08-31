@@ -4,13 +4,16 @@
   <h1><strong>Details</strong></h1>
   <br>
   
-  <div class="row">
-    <h4 class="col-xs-2"><strong>Submitted by: </strong><%= @worksheet.submitted_by %></h4>
-    <h4 class="col-xs-2"><strong>PIW ID: </strong><%= @worksheet.piw_id %> </h4>  
-    <h4 class="col-xs-2"><strong>Date Opened: </strong><%= @worksheet.date_opened %></h4>
+  <div class="row">    
+    <h4 class="col-xs-3"><strong>PIW ID: </strong><%= @worksheet.piw_id %> </h4>  
+    <h4 class="col-xs-3"><strong>Date Opened: </strong><%= @worksheet.date_opened.strftime('%b %d, %Y') %></h4>
     <h4 class="col-xs-2"><strong>Status: </strong><%= @worksheet.status %></h4>
-    <h4 class="col-xs-3"><strong>Last Updated: </strong><%= @worksheet.updated_at %> </h4>  
+    <h4 class="col-xs-4"><strong>Last Updated: </strong><%= @worksheet.updated_at.strftime('%b %d, %Y at %H:%M') %> </h4>  
   </div>  
+
+  <div class="row">
+
+  </div>
 
   <div class="row">
     <h4 class="col-xs-3"><strong>Pre-Load: </strong><%= @worksheet.pre_load %> </h4>    
@@ -36,7 +39,7 @@
   </div> 
   <div class="row">   
     <h4 class="col-xs-4"><strong>Action Taken By: </strong><%= @worksheet.action_taken_by %></h4>
-    <h4 class="col-xs-3"><strong>Date Closed: </strong><%= @worksheet.date_closed %></h4>
+    <h4 class="col-xs-3"><strong>Date Closed: </strong><%= @worksheet.date_closed.strftime('%b %d, %Y') if @worksheet.date_closed %></h4>
   </div>
   <br>
 
@@ -77,15 +80,17 @@
   <h1><strong>PIW Comments</strong></h1>
   <br>
 
-  <table class="col-xs-6">
+  <table class="col-xs-8">
     <tr>
-      <th class=col-xs-8>Comment</th>          
-      <th class="col-xs-4">Entered By</th>          
+      <th class=col-xs-6>Comment</th>          
+      <th class="col-xs-2">Entered By</th>
+      <th class="col-xs-4">Date Entered</th>           
     </tr> 
       <% @worksheet.comments.each do |comment| %>      
         <tr>
-          <td><%= comment.message %></td>             
-          <td><%= comment.user.username if comment.user %></td> <!--check to see if email is blank before writting to table -->        
+          <td><%= comment.message if comment.message %></td>             
+          <td><%= comment.user.username if comment.user %></td> <!--check to see if email is blank before writting to table -->   
+          <td><%= comment.created_at.strftime('%b %d, %Y') %></td>     
         </tr>  
       <% end %>
   </table>

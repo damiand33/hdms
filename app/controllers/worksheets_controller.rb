@@ -22,7 +22,7 @@ class WorksheetsController < ApplicationController
   def create
     @worksheet = current_user.worksheets.new(worksheet_params)
     @worksheet.save
-    redirect_to @worksheet
+    redirect_to @worksheet 
   end
 
   def show
