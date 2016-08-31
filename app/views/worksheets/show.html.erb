@@ -76,20 +76,19 @@
   <hr>
   <h1><strong>PIW Comments</strong></h1>
   <br>
-  <% @worksheet.comments.each do |comment| %>
-    <% if comment.message.present? %>
-      <table class="col-xs-6">
-        <tr>
-          <th class=col-xs-8>Comment</th>          
-          <th class="col-xs-4">Entered By</th>          
-        </tr>        
+
+  <table class="col-xs-6">
+    <tr>
+      <th class=col-xs-8>Comment</th>          
+      <th class="col-xs-4">Entered By</th>          
+    </tr> 
+      <% @worksheet.comments.each do |comment| %>      
         <tr>
           <td><%= comment.message %></td>             
           <td><%= comment.user.username if comment.user %></td> <!--check to see if email is blank before writting to table -->        
-        </tr>         
-      </table>
-    <% end %>
-  <% end %>
+        </tr>  
+      <% end %>
+  </table>
 
   <div class="clear"></div>
   <br>
