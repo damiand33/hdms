@@ -29,6 +29,15 @@ class WorksheetsController < ApplicationController
     @worksheet = Worksheet.find(params[:id])
     @comment = Comment.new
     @attachment = Attachment.new
+    #@attachment = Attachment.find(params[:2])
+    @updateTime = Worksheet.maximum('updated_at')
+    @images = Attachment.where worksheet_id: (params[:id])
+
+    @images.each do |image|
+      if image.updated_at > @worksheet.updated_at
+        @updateTime = image.updated_at
+      end
+    end  
   end
 
   def edit
@@ -40,7 +49,7 @@ class WorksheetsController < ApplicationController
   def update
     @worksheet = Worksheet.find(params[:id])
     @worksheet.update_attributes(worksheet_params)
-    redirect_to root_path
+    redirect_to @worksheet 
   end
 
   def images

@@ -6,9 +6,9 @@
   
   <div class="row">    
     <h4 class="col-xs-3"><strong>PIW ID: </strong><%= @worksheet.piw_id %> </h4>  
-    <h4 class="col-xs-3"><strong>Date Opened: </strong><%= @worksheet.date_opened.strftime('%b %d, %Y') %></h4>
+    <h4 class="col-xs-3"><strong>Date Opened: </strong><%= @worksheet.date_opened.strftime('%b %d, %Y') if @worksheet.date_opened%></h4>
     <h4 class="col-xs-2"><strong>Status: </strong><%= @worksheet.status %></h4>
-    <h4 class="col-xs-4"><strong>Last Updated: </strong><%= @worksheet.updated_at.strftime('%b %d, %Y at %H:%M') %> </h4>  
+    <h4 class="col-xs-4"><strong>Last Updated: </strong><%= @updateTime.strftime('%b %d, %Y at %H:%M') if @updateTime%> </h4>  
   </div>  
 
   <div class="row">
@@ -54,17 +54,14 @@
   
   
     <% @worksheet.attachments.each do |attachment| %>    
-        
-        <figure>
-          <%= image_tag attachment.image, class: 'piw-image' %>
-          <figcaption><%= attachment.caption %></figcaption> 
-        </figure>  
-         
-    <% end %>
+       
+          <figure>
+            <%= image_tag attachment.image, class: 'piw-image' %>
+            <figcaption><%= attachment.caption %></figcaption> 
+          </figure>  
+        <% end %>    
  
   <div class="clear"></div>
-
-
   <br>
   <br>
   <!-- Button trigger image modal -->
@@ -79,21 +76,22 @@
   <hr>
   <h1><strong>PIW Comments</strong></h1>
   <br>
-
-  <table class="col-xs-8">
-    <tr>
-      <th class=col-xs-6>Comment</th>          
-      <th class="col-xs-2">Entered By</th>
-      <th class="col-xs-4">Date Entered</th>           
-    </tr> 
-      <% @worksheet.comments.each do |comment| %>      
-        <tr>
-          <td><%= comment.message if comment.message %></td>             
-          <td><%= comment.user.username if comment.user %></td> <!--check to see if email is blank before writting to table -->   
-          <td><%= comment.created_at.strftime('%b %d, %Y') %></td>     
-        </tr>  
-      <% end %>
-  </table>
+  <% if @worksheet.comments.nil? %>
+    <table class="col-xs-8">
+      <tr>
+        <th class=col-xs-6>Comment</th>          
+        <th class="col-xs-2">Entered By</th>
+        <th class="col-xs-4">Date Entered</th>           
+      </tr> 
+        <% @worksheet.comments.each do |comment| %>      
+          <tr>
+            <td><%= comment.message if comment.message %></td>             
+            <td><%= comment.user.username if comment.user %></td> <!--check to see if email is blank before writting to table -->   
+            <td><%= comment.created_at.strftime('%b %d, %Y') %></td>     
+          </tr>  
+        <% end %>
+    </table>
+  <% end %>
 
   <div class="clear"></div>
   <br>
@@ -181,8 +179,7 @@
             </div>           
           
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>              
           </div>
         
         </div>
