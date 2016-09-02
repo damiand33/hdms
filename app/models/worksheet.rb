@@ -3,8 +3,6 @@ class Worksheet < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :attachments, :dependent => :destroy
   validates :date_opened, presence: true
-  validates :pre_load, presence: true
-  validates :pre_load, presence: true
   validates :impact, presence: true
   validates :requested_by, presence: true
   

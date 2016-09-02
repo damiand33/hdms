@@ -23,6 +23,8 @@ class WorksheetsController < ApplicationController
     if @worksheet.valid?    
       redirect_to @worksheet 
     else
+      t = Time.now.in_time_zone("Eastern Time (US & Canada)")  
+      @auto_id = t.strftime("%m%d%y%H%M") + current_user.username.upcase 
       render :new, status: :unprocessable_entity
     end
   end
@@ -30,8 +32,7 @@ class WorksheetsController < ApplicationController
   def show
     @worksheet = Worksheet.find(params[:id])
     @comment = Comment.new
-    @attachment = Attachment.new
-    #@attachment = Attachment.find(params[:2])
+    @attachment = Attachment.new    
     @updateTime = Worksheet.maximum('updated_at')
     @images = Attachment.where worksheet_id: (params[:id])
 
