@@ -3,8 +3,7 @@ class WorksheetsController < ApplicationController
    
   def index
     @worksheets = Worksheet.order('id desc').all
-    @currentUser = current_user.username
-    
+    @currentUser = current_user.username    
 
     respond_to do |format| #Helper for exporting to Excel
       format.html
@@ -19,10 +18,13 @@ class WorksheetsController < ApplicationController
     @auto_id = t.strftime("%m%d%y%H%M") + current_user.username.upcase   
   end
 
-  def create
-    @worksheet = current_user.worksheets.new(worksheet_params)
-    @worksheet.save
-    redirect_to @worksheet 
+  def create    
+    @worksheet = current_user.worksheets.create(worksheet_params)
+    if @worksheet.valid?    
+      redirect_to @worksheet 
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -42,14 +44,17 @@ class WorksheetsController < ApplicationController
 
   def edit
     @worksheet = Worksheet.find(params[:id])
-    @attachments = Attachment.all
-    
+    @attachments = Attachment.all    
   end
 
   def update
     @worksheet = Worksheet.find(params[:id])
     @worksheet.update_attributes(worksheet_params)
-    redirect_to @worksheet 
+    if @worksheet.valid?      
+      redirect_to @worksheet 
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def images
