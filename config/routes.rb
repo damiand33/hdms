@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :attachments
     resources :images    
   end
+  # get 'edit_image', to: 'worksheets#edit_image'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

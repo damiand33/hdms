@@ -8,9 +8,22 @@ class AttachmentsController < ApplicationController
   end
 
   def destroy
+    puts "destroy"
     @worksheet = Worksheet.find(params[:worksheet_id])
     @attachment = Attachment.find(params[:id])
     @attachment.destroy
+    redirect_to worksheet_path(@worksheet)
+  end
+
+  def edit
+    @worksheet = Worksheet.find(params[:worksheet_id])
+    @attachment = Attachment.find(params[:id])
+  end
+
+  def update
+    @worksheet = Worksheet.find(params[:worksheet_id])
+    @attachment = Attachment.find(params[:id])
+    @attachment.update_attributes(attachment_params)
     redirect_to worksheet_path(@worksheet)
   end
 

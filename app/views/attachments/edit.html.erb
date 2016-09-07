@@ -1,0 +1,20 @@
+<br>
+<div class="booyah-box col-sm-8 col-sm-offset-2">
+	<h1>Edit Image</h1>
+
+	<%= image_tag @attachment.image, class: 'piw-image' %>
+
+	<%= simple_form_for @attachment, url: worksheet_attachment_path(@worksheet, @attachment) do |f| %>	
+		
+		<br> 
+		<%= f.input :name %>
+		<br>
+		<%= f.input :caption %>
+		<br>
+		<%= f.input :image %>  	           
+		<br>
+		<%= f.submit 'Update', method: :update, class: 'btn btn-primary' %>
+		<%=link_to "Cancel", :back, class: 'btn btn-primary' %>
+		<%= link_to 'Delete', worksheet_attachment_path(@worksheet, @attachment), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
+</div>

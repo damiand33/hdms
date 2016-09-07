@@ -10,16 +10,14 @@
   </p>
   <table class="summary-table col-xs-10 col-xs-offset-1">
     <tr>      
-      <th>PIW ID</th>
-      <th>Submitted By</th>
+      <th>PIW ID</th>      
       <th>As-is Description</th>     
       <th>Date Submitted</th>
       <th>Status</th>
     </tr>
     <% @worksheets.each do |worksheet| %>
       <tr>        
-        <td class="col-xs-2"><%= link_to worksheet.piw_id, worksheet_path(worksheet) %></td>
-        <td class="col-xs-1"><%= worksheet.submitted_by %></td>
+        <td class="col-xs-2"><%= link_to worksheet.piw_id, worksheet_path(worksheet) %></td>        
         <td class="col-xs-6"><%= worksheet.description_as_is %></td>       
         <td class="col-xs-2"><%= worksheet.date_opened.strftime('%b %d, %Y') if worksheet.date_opened %></td>
         <td class="col-xs-1"><%= worksheet.status%></td>

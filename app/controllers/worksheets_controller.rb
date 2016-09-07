@@ -3,7 +3,7 @@ class WorksheetsController < ApplicationController
    
   def index
     @worksheets = Worksheet.order('id desc').all
-    @currentUser = current_user.username    
+    @currentUser = current_user.username   
 
     respond_to do |format| #Helper for exporting to Excel
       format.html
@@ -61,6 +61,9 @@ class WorksheetsController < ApplicationController
   def images
     @attachments = Attachment.all
     @attachment = Attachment.new
+  end
+
+  def edit_image
   end
   
   private
