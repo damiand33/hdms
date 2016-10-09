@@ -1,9 +1,9 @@
 class WorksheetsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
    
   def index
     @worksheets = Worksheet.order('id desc').all
-    @currentUser = current_user.username   
+    # @currentUser = current_user.username   
 
     respond_to do |format| #Helper for exporting to Excel
       format.html
